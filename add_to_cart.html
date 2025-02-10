@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+  font-family: "Lalezar", serif;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.cart{
+  background-color: rgb(206, 206, 206);
+  width: 70%;
+  height: auto;
+  min-height: 100px;
+}
+
+.head{
+  background-color: rgb(150, 150, 150);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  width: auto;
+  height: 40px;
+}
+
+.title{
+  display: inline;
+  font-size: 25px;
+}
+
+.buttons button{
+  cursor: pointer;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  margin: 0 5px;
+  font-family: "Lalezar", serif;
+}
+
+.image{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.product{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+  margin: 15px;
+}
+
+.number{
+  text-decoration: underline;
+  padding: 15px;
+  border-radius: 50%;
+}
+
+.p_title{
+  font-size: 25px;
+}
+
+.p_price{
+  font-size: 25px;
+}
+
+.p_count{
+  height: 20px;
+  width: 70px;
+  padding: 5px;
+  text-align: center;
+  border: none;
+  border-radius: 15px;
+  font-family: "Lalezar", serif;
+}
+
+.final_price{
+  font-size: 25px;
+}
+
+.remove{
+  width: 40px;
+  height: 40px;
+  font-size: 25px;
+  color: white;
+  background-color: brown;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
+  font-family: "Lalezar", serif;
+}
+
+.empty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.items{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  margin: 15px 0;
+}
+
+.item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 180px;
+  height: 250px;
+  background-color: rgba(214, 214, 214, 0.726);
+  border-radius: 15px;
+  padding: 15px 5px;
+}
+
+.item img{
+  width: 100px;
+  height: 100px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.addToCart{
+  width: 80%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Lalezar&display=swap" rel="stylesheet">
+  <title>shop cart</title>
+</head>
+<body>
+  <!--Shopping cart-->
+  <div class="container">
+    <div class="cart">
+      <div class="head">
+        <p class="title">Products</p>
+        <div class="buttons">
+          <button class="shoppng">Go to shop page</button>
+          <button class="complete">Complete Shopping</button>
+        </div>
+      </div>
+      <hr>
+      <div class="products">
+        <!--
+        <div class="product">
+          <img src="DE-en-20250203-TRIFECTA-perspective_3f92d19d-f4ff-42bc-86fc-2ded722b337c_large.jpg" alt="" class="image">
+          <p class="p_title">Product title</p>
+          <p class="p_price">99999$</p>
+          <input type="number" class="p_count">
+          <p class="final_price">999$</p>  
+          <button class="remove">&#10008;</button>
+        </div>
+        <hr>-->
+        <!--
+        <div class="empty">
+          <p class="empty-text">Your cart is empty! Select an item</p>
+        </div>
+        -->
+      </div>
+    </div>
+    <!--Items-->
+    <div class="items">
+      <div class="item">
+        <img src="assets/pics/1.jpg" alt="" class="item_image">
+        <p class="item_title">Item name 1</p>
+        <p class="item_price">80$</p>
+        <button class="addToCart">Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/2.avif" alt="" class="item_image">
+        <p class="item_title">Item name 2</p>
+        <p class="item_price">99$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/3.webp" alt="" class="item_image">
+        <p class="item_title">Item name 3</p>
+        <p class="item_price">8$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/4.jpg" alt="" class="item_image">
+        <p class="item_title">Item name 4</p>
+        <p class="item_price">150$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/5.jpg" alt="" class="item_image">
+        <p class="item_title">Item name 5</p>
+        <p class="item_price">70$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/6.webp" alt="" class="item_image">
+        <p class="item_title">Item name 6</p>
+        <p class="item_price">180$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/7.webp" alt="" class="item_image">
+        <p class="item_title">Item name 7</p>
+        <p class="item_price">800$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/8.webp" alt="" class="item_image">
+        <p class="item_title">Item name 8</p>
+        <p class="item_price">2000$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+      <div class="item">
+        <img src="assets/pics/9.jpg" alt="" class="item_image">
+        <p class="item_title">Item name 9</p>
+        <p class="item_price">20$</p>
+        <button class="addToCart" >Add to cart</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+//check if cart in empty
+function checkCartEmpty(){
+  let cart = document.querySelector(".products");
+  if(cart){
+    if(cart.childElementCount === 0 && !cart.querySelector('.empty')){
+  
+      //creating empty text structure
+        //creating div
+      let newDiv = document.createElement('div');
+      cart.appendChild(newDiv);
+      newDiv.classList.add("empty");
+    
+        //creating p
+      let newPtext = document.createElement('p');
+      newDiv.appendChild(newPtext);
+      newPtext.textContent = "Your cart is empty! Select an item";
+      newPtext.classList.add("empty-text");
+    }else{ // remove text when its empty again
+      let emptyMessage = cart.querySelector('.empty')
+      if(emptyMessage){
+        emptyMessage.remove()
+      }
+    }
+  }
+}
+
+checkCartEmpty() /*current status of cart*/ 
+
+//add & removing product to cart
+document.querySelectorAll(".addToCart").forEach(button => {
+  button.addEventListener("click", function() {
+
+    //get Item info
+    let item = this.closest(".item");
+    let image = item.querySelector(".item_image").src;
+    let title = item.querySelector(".item_title").textContent;
+    let price = item.querySelector(".item_price").textContent;
+
+    //add product to cart
+      //create a clone of added item
+        //create elements (div/img/p: title-price /remove button)
+    let newDiv = document.createElement("div");
+    newDiv.classList.add("product");
+
+    let newImg = document.createElement("img");
+    newImg.src = image;
+    newImg.classList.add("image");
+
+    let newPtitle = document.createElement("p");
+    newPtitle.textContent = title;
+    newPtitle.classList.add('p_title');
+
+    let newPprice = document.createElement("p");
+    newPprice.textContent = price;
+    newPprice.classList.add('p_price');
+
+    let newCount = document.createElement("input");
+    newCount.type = "number";
+    newCount.value = 1;
+    newCount.max = 999;
+    newCount.classList.add("p_count");
+
+    let newFinalPrice = document.createElement("p");
+    let count = parseFloat(newCount.value) ;
+    newFinalPrice.textContent = (count * parseFloat(price) + "$" );
+    newFinalPrice.classList.add("final_price");
+    //check if the count changes
+    newCount.addEventListener("input" , function(){
+      let updateCount = parseFloat(this.value) || 0 ;
+      newFinalPrice.textContent = (updateCount * parseFloat(price) + "$" );
+    })
+
+    let removeButton = document.createElement('button');
+    removeButton.innerHTML = "&#10008";
+    removeButton.classList.add('remove');
+
+    let seperator = document.createElement("hr");
+
+    //currect added elemnts order(in cloned div)
+    newDiv.appendChild(newImg);
+    newDiv.appendChild(newPtitle);
+    newDiv.appendChild(newPprice);
+    newDiv.appendChild(newCount);
+    newDiv.appendChild(newFinalPrice);
+    newDiv.appendChild(removeButton);
+    //add cloned div and seperator to cart
+    document.querySelector(".products").appendChild(newDiv);
+    document.querySelector(".products").appendChild(seperator);
+
+    //removeButton function define
+    function removeProduct() {
+      let confirmation = confirm("Are you sure you want to remove this item?");
+      if (confirmation) {
+        newDiv.remove();
+        seperator.remove()
+        checkCartEmpty() /*update cart status after removing*/
+      }
+    }
+
+    //removeButton function execution on click
+    removeButton.addEventListener("click", removeProduct);
+
+    checkCartEmpty() /*update cart status after adding product*/ 
+  });
+});
+
+
+    //futures:
+    /* 
+    3.change the button text if item is added:
+      this.textContent = "Added to Cart";
+      this.disabled = true;
+    4.final price of all shopping
+    5.add number befor each item
+    6.local storage
+    */
+  </script>
+</body>
+</html>
+
+<!--
+futures
+Complete Shopping & Go to shop page pages
+responsive
+design
+alert design
+-->
