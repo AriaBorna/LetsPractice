@@ -102,6 +102,7 @@ document.querySelectorAll(".addToCart").forEach(button => {
     removeButton.addEventListener("click", removeProduct);
 
     checkCartEmpty() /*update cart status after adding product*/ 
+
   });
 });
 
