@@ -1,3 +1,4 @@
+/*base*/
 body{
   font-family: "Lalezar", serif;
 }
@@ -16,6 +17,8 @@ body{
   height: auto;
   min-height: 100px;
 }
+
+/*cart header*/
 
 .head{
   background-color: rgb(150, 150, 150);
@@ -41,12 +44,14 @@ body{
   font-family: "Lalezar", serif;
 }
 
-.image{
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 15px;
+.empty{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
 }
+
+/*added to cart products*/
 
 .product{
   display: flex;
@@ -54,6 +59,13 @@ body{
   align-items: center;
   height: auto;
   margin: 15px;
+}
+
+.image{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .number{
@@ -97,12 +109,7 @@ body{
   font-family: "Lalezar", serif;
 }
 
-.empty{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 25px;
-}
+/*Products list*/
 
 .items{
   display: grid;
@@ -138,4 +145,86 @@ body{
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+
+/*Responsive*/
+@media only screen and (max-width: 700px) {
+  .cart{
+    width: 90%;
+  }
+
+  .head{
+    height: auto;
+  }
+
+  .title{
+    display: inline;
+    font-size: 18px;
+  }
+
+  .buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .buttons button{
+    margin: 5px;
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .empty-text{
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .items{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin: 15px 0;
+  }
+
+  .item{
+    width: 140px;
+    height: 200px;
+  }
+
+  .addToCart{
+    height: 40px;
+  }
+
+  .item_title , .item_price{
+    margin: 5px 0;
+  }
+
+  .product{
+    flex-direction: row;
+    margin: 5px;
+  }
+
+  .image{
+    width: 60px;
+    height: 60px;
+  }
+
+  .p_title , .p_price , .final_price{
+    margin: 5px 0;
+    font-size: 15px;
+  }
+
+  .p_count{
+    height: 15px;
+    width: 50px;
+  }
+
+  .remove{
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
 }
