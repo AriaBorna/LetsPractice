@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+  <style>
+    /* Basics */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Merienda", serif;
+  background-color: #f5f5f7;
+  color: #1c1c1e;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Page Title */
+.page_title p, .tasks_list_title p {
+  font-size: 35px;
+  background-color: #ffffff;
+  width: 250px;
+  text-align: center;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Add Task Form */
+.add_tasks form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  background-color: #ffffff;
+  width: 400px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task_title, .task_description {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #d1d1d6;
+  border-radius: 12px;
+  background-color: #f5f5f7;
+  font-size: 16px;
+}
+
+/* Task List */
+.tasks_list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 35px;
+  grid-row-gap: 20px;
+  width: 900px;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 160px;
+  padding: 20px;
+  background-color: #f5f5f7;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.list_task_title {
+  text-align: center;
+  overflow: hidden;
+  width: 100px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1c1c1e;
+}
+
+.list_task_description {
+  text-align: center;
+  overflow: hidden;
+  width: 100px;
+  font-size: 14px;
+  color: #636366;
+}
+
+/* Buttons */
+.list_task_status, .list_task_edit, .list_task_remove, .add_task {
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.list_task_status {
+  background-color: #34c759;
+  color: #ffffff;
+}
+
+.list_task_edit {
+  background-color: #ff9500;
+  color: #ffffff;
+}
+
+.list_task_remove {
+  background-color: #ff3b30;
+  color: #ffffff;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+@media only screen and (max-width: 700px){
+  .page_title p{
+    font-size: 18px;
+  }
+
+  .add_tasks form{
+    width: 300px;
+  }
+
+  .task_title, .task_description{
+    width: 250px;
+  }
+
+  .tasks_list_title p{
+    font-size: 18px;
+  }
+
+  .tasks_list{
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+  }
+}
+  </style>
+  <title>To-Do List</title>
+</head>
+<body>
+  <div class="page_title">
+    <p>To-Do List</p>
+  </div>
+  <div class="add_tasks">
+    <form>
+      <label for="task_title">Task Title</label>
+      <input type="text" class="task_title">
+      <label for="task_description">Task Description</label>
+      <textarea name="task_description" class="task_description"></textarea>
+      <button class="add_task">Add Task</button>
+    </form>
+  </div>
+  <div class="tasks_list_title">
+    <p>Tasks List</p>
+  </div>
+  <div class="tasks_list">
+    <!--
+    <div class="task">
+      <p class="list_task_title">Task Title</p>
+      <p class="list_task_description">Task Description</p>
+      <button class="list_task_status">Done &#10004;</button>
+      <button class="list_task_edit">&#9998;</button>
+      <button class="list_task_remove">&#10540;</button>
+    </div>
+    -->
+  </div>
+
+  <script>
+    
+let editingTask = null;
+
+//add task button function
+document.querySelectorAll(".add_task").forEach(button => {
+    button.addEventListener("click", function(event) {
+        event.preventDefault();
+
+        //get task form infos
+        let taskTitleInput = document.querySelector(".task_title");
+        let taskDescriptionInput = document.querySelector(".task_description");
+        let addTaskButton = document.querySelector(".add_task");
+
+        //edit button
+        if (editingTask) {
+            editingTask.querySelector(".list_task_title").textContent = taskTitleInput.value;
+            editingTask.querySelector(".list_task_description").textContent = taskDescriptionInput.value;
+
+            addTaskButton.textContent = "Add Task";
+            addTaskButton.classList.remove("update_task");
+            editingTask = null;
+        } else {
+            let title = taskTitleInput.value.trim();
+            let description = taskDescriptionInput.value.trim();
+
+            //add new task
+            if (title === "" || description === "") {
+                alert("Please enter both title and description.");
+                return;
+            }
+
+            // Create new task elements
+            let newTask = document.createElement("div");
+            newTask.classList.add("task");
+
+            let newTaskTitle = document.createElement("p");
+            newTaskTitle.classList.add("list_task_title");
+            newTaskTitle.textContent = title;
+
+            let newTaskDescription = document.createElement("p");
+            newTaskDescription.classList.add("list_task_description");
+            newTaskDescription.textContent = description;
+
+            let newTaskStatus = document.createElement("button");
+            newTaskStatus.classList.add("list_task_status");
+            newTaskStatus.textContent = "Not Started";
+            newTaskStatus.style.backgroundColor = "gray";
+
+            // status toggle
+            newTaskStatus.addEventListener("click", function() {
+                if (newTaskStatus.textContent === "Not Started") {
+                    newTaskStatus.textContent = "Done";
+                    newTaskStatus.style.backgroundColor = "darkgreen";
+                    newTaskStatus.style.color = "white";
+                } else {
+                    newTaskStatus.textContent = "Not Started";
+                    newTaskStatus.style.backgroundColor = "gray";
+                    newTaskStatus.style.color = "black";
+                }
+            });
+
+            // Create edit button
+            let newTaskEdit = document.createElement("button");
+            newTaskEdit.classList.add("list_task_edit");
+            newTaskEdit.textContent = "Edit";
+
+            // Create remove button
+            let newTaskRemove = document.createElement("button");
+            newTaskRemove.classList.add("list_task_remove");
+            newTaskRemove.textContent = "Remove";
+
+            // remove button
+            newTaskRemove.addEventListener("click", function() {
+                newTask.remove();
+            });
+
+            // Edit button
+            newTaskEdit.addEventListener("click", function() {
+                taskTitleInput.value = newTaskTitle.textContent;
+                taskDescriptionInput.value = newTaskDescription.textContent;
+
+                addTaskButton.textContent = "Update Task";
+                addTaskButton.classList.add("update_task");
+
+                editingTask = newTask;
+            });
+
+            // add elements to parent
+            newTask.appendChild(newTaskTitle);
+            newTask.appendChild(newTaskDescription);
+            newTask.appendChild(newTaskStatus);
+            newTask.appendChild(newTaskEdit);
+            newTask.appendChild(newTaskRemove);
+
+            document.querySelector(".tasks_list").appendChild(newTask);
+        }
+
+        // reset the form values
+        taskTitleInput.value = "";
+        taskDescriptionInput.value = "";
+
+    });
+});
+
+
+  </script>
+</body>
+</html>
